@@ -4,8 +4,6 @@
 #
 #------------------------------------------------
 
-# This assumes that this makefile is copied into something
-# like $GOPATH/src/github.com/example/package
 export GOPATH:=$(realpath $(shell pwd)/../../../..)
 
 #------------------------------------------------
@@ -32,7 +30,7 @@ all: build coverage lint-full
 GOMAKE:=gopkg.in/make.v4
 -include $(GOPATH)/src/$(GOMAKE)/batteries.mk
 $(GOPATH)/src/$(GOMAKE)/%:
-	$(GO) get $(GOMAKE)/...
+	go get $(GOMAKE)/...
 
 #------------------------------------------------
 #
@@ -45,6 +43,3 @@ $(GOPATH)/src/$(GOMAKE)/%:
 
 .PHONY: build
 build: install
-
-install: $(GLIDE)
-
